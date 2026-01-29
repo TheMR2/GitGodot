@@ -1,62 +1,221 @@
-[gd_scene load_steps=2 format=3 uid="uid://do56yc47s0guo"]
+[gd_scene format=3 uid="uid://do56yc47s0guo"]
 
-[sub_resource type="GDScript" id="GDScript_li8s1"]
-script/source = "extends Node
+[ext_resource type="Script" uid="uid://d2hn7gl1vk4mc" path="res://addons/GitGodot/git_godot.gd" id="1_gcw6w"]
+[ext_resource type="Texture2D" uid="uid://c3l2lnc5lgsa1" path="res://addons/GitGodot/vodafone-icon.svg" id="2_mnsk4"]
+[ext_resource type="Texture2D" uid="uid://bf64yy6fmv8ra" path="res://addons/GitGodot/Git_Godot.png" id="3_cht1j"]
 
-
-@onready var commit = $LineEdit.text
-var path = ProjectSettings.globalize_path(\"res://\") 
-
-func _ready() -> void:
-	$Button.pressed.connect(_on_button_pressed)
-	
-	
-func _on_button_pressed():
-	print(\"G\")
-	var output := [] 
-	var cmd = ( \"cd \\\"\"+ path +\"\\\"\" 
-	+ \"&& git add .\" 
-	+ \"&& git commit -m \\\"\" + commit +\"\\\"\" 
-	+ \"&& git push -u origin main\" 
-	) 
-	OS.execute( \"cmd.exe\", [\"/c\", cmd], output, true ) 
-	for line in output: 
-		print(\"line\",line)
-	pass # Replace with function body.
-"
-
-[node name="GitGodot" type="Control"]
-layout_mode = 3
+[node name="VBoxContainer" type="BoxContainer" unique_id=1750021893]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -864.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_li8s1")
+theme_override_constants/separation = 87
+alignment = 1
+script = ExtResource("1_gcw6w")
 
-[node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -227.0
-offset_bottom = -196.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Push_Container" type="VBoxContainer" parent="." unique_id=1108780482]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Push_Container" unique_id=1845573867]
+layout_mode = 2
+text = "Push"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Push_Container" unique_id=499945090]
+layout_mode = 2
 placeholder_text = "Commit"
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -172.0
-offset_bottom = -98.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Button" type="Button" parent="Push_Container" unique_id=376160839]
+layout_mode = 2
+disabled = true
 text = "Push"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Push_Container2" type="VBoxContainer" parent="." unique_id=163891788]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Push_Container2" unique_id=1812529888]
+layout_mode = 2
+text = "Branch"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Push_Container2" unique_id=695253357]
+layout_mode = 2
+
+[node name="Pull_Container" type="VBoxContainer" parent="." unique_id=1654908570]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Pull_Container" unique_id=126578535]
+layout_mode = 2
+text = "Pull"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Pull_Container" unique_id=1051058680]
+layout_mode = 2
+text = "Pull"
+
+[node name="Pull_Container2" type="VBoxContainer" parent="." unique_id=604611135]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Pull_Container2" unique_id=1690018993]
+layout_mode = 2
+text = "settings"
+
+[node name="Button2" type="Button" parent="Pull_Container2" unique_id=1678304426]
+layout_mode = 2
+text = "Info"
+
+[node name="Window" type="Window" parent="." unique_id=1363460217]
+oversampling_override = 1.0
+title = "GitGodot Settings"
+position = Vector2i(298, 72)
+size = Vector2i(390, 333)
+visible = false
+
+[node name="Label" type="Label" parent="Window" unique_id=2065116028]
+offset_top = 8.0
+offset_right = 390.0
+offset_bottom = 31.0
+text = "Add_Branch"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window" unique_id=1348971652]
+offset_top = 294.0
+offset_right = 390.0
+offset_bottom = 325.0
+theme_override_constants/separation = 6
+
+[node name="LineEdit" type="LineEdit" parent="Window/HBoxContainer" unique_id=561723274]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Branch Name"
+
+[node name="Button" type="Button" parent="Window/HBoxContainer" unique_id=1864854492]
+layout_mode = 2
+text = "  +  "
+
+[node name="Button2" type="Button" parent="Window/HBoxContainer" unique_id=577852025]
+layout_mode = 2
+text = "  -  "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window" unique_id=1382789954]
+offset_top = 31.0
+offset_right = 390.0
+offset_bottom = 294.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/ScrollContainer" unique_id=410719245]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="info" type="Window" parent="." unique_id=485049641]
+oversampling_override = 1.0
+title = "Info"
+position = Vector2i(45, 36)
+size = Vector2i(1000, 1000)
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="info" unique_id=1027674493]
+offset_left = 113.0
+offset_top = 436.0
+offset_right = 246.0
+offset_bottom = 569.0
+texture = ExtResource("2_mnsk4")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="info/TextureRect" unique_id=1383990288]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 48.0
+offset_right = 801.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 32
+text = "support me via +201110747697 (if you can)"
+
+[node name="Label3" type="Label" parent="info" unique_id=2004181617]
+offset_left = 321.0
+offset_top = 707.0
+offset_right = 694.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 32
+text = "supporters will appear here in the next update."
+autowrap_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="info" unique_id=1311891920]
+offset_left = 408.0
+offset_top = -3.0
+offset_right = 598.0
+offset_bottom = 187.0
+texture = ExtResource("3_cht1j")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="info/TextureRect2" unique_id=1424957034]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 195.0
+offset_right = 196.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 32
+text = "GitGodot V2.0"
+
+[node name="LinkButton" type="LinkButton" parent="info/TextureRect2/Label4" unique_id=1099670295]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 45.0
+offset_right = 157.0
+offset_bottom = 68.0
+text = "Github Page"
+
+[node name="LinkButton" type="LinkButton" parent="info" unique_id=1578385633]
+offset_left = 276.0
+offset_top = 246.0
+offset_right = 423.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0, 0, 0.8745098, 1)
+theme_override_font_sizes/font_size = 32
+text = "Facebook"
+uri = "https://www.facebook.com/profile.php?id=61558072395327"
+
+[node name="LinkButton2" type="LinkButton" parent="info" unique_id=1356873312]
+offset_left = 439.0
+offset_top = 246.0
+offset_right = 586.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Youtube"
+uri = "https://www.youtube.com/@MR-np5nl"
+
+[node name="LinkButton4" type="LinkButton" parent="info" unique_id=902132661]
+offset_left = 439.0
+offset_top = 303.0
+offset_right = 586.0
+offset_bottom = 348.0
+theme_override_colors/font_color = Color(0.43917835, 0.5535536, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "The_MR"
+
+[node name="LinkButton3" type="LinkButton" parent="info" unique_id=17299782]
+offset_left = 586.0
+offset_top = 246.0
+offset_right = 733.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0, 0.54901963, 0.8745098, 1)
+theme_override_font_sizes/font_size = 32
+text = "Linkedin"
+uri = "https://www.linkedin.com/in/mohamed-rajab-749899391/"
+
+[connection signal="pressed" from="Push_Container/Button" to="." method="Push"]
+[connection signal="item_selected" from="Push_Container2/OptionButton" to="." method="Set_Branch"]
+[connection signal="pressed" from="Push_Container2/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="Pull_Container/Button" to="." method="Pull"]
+[connection signal="pressed" from="Pull_Container2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pull_Container2/Button2" to="." method="Donate_Page"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="Window/HBoxContainer/Button" to="." method="_on_buttond_pressed"]
+[connection signal="pressed" from="Window/HBoxContainer/Button2" to="." method="delete"]
+[connection signal="close_requested" from="info" to="." method="_on_info_close_requested"]

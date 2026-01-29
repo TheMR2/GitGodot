@@ -2,38 +2,25 @@
 extends EditorPlugin
 
 var path = ProjectSettings.globalize_path("res://") 
-var dock
 var button:Button
 var label:LineEdit
+var dock:EditorDock
+var vboxcontainer:VBoxContainer
 
+	#vboxcontainer = VBoxContainer.new()
+	#button = Button.new()
+	#button.text = "Push"
+	#label = LineEdit.new()
+	#vboxcontainer.add_child(button)
+	#vboxcontainer.add_child(label)
 func _enter_tree() -> void:
-	button = Button.new()
-	button.text = "Push"
-	button.pressed.connect(_on_button_pressed)
-	add_control_to_container(CONTAINER_INSPECTOR_BOTTOM,button)
-
-
-	label = LineEdit.new()
-	add_control_to_container(CONTAINER_INSPECTOR_BOTTOM,label)
-
+	dock = EditorDock.new()
+	dock.name = "GitGodot 2.0"
+	dock.default_slot = EditorDock.DOCK_SLOT_BOTTOM
+	var dock_content = preload("res://addons/GitGodot/GitGodot.tscn").instantiate()
+	dock.add_child(dock_content)
+	add_dock(dock)
 
 func _exit_tree() -> void:
-	remove_control_from_container(CONTAINER_INSPECTOR_BOTTOM,button)
-	button.queue_free()
-
-	label.queue_free()
-	remove_control_from_container(CONTAINER_INSPECTOR_BOTTOM,label)
-
-
-func _on_button_pressed():
-	var commit = label.text
-	var output := [] 
-	var cmd = ( "cd \""+ path +"\"" 
-	+ "&& git add ." 
-	+ "&& git commit -m \"" + commit +"\"" 
-	+ "&& git push -u origin main" 
-	) 
-	OS.execute( "cmd.exe", ["/c", cmd], output, true ) 
-	for line in output: 
-		print("line",line)
-	pass # Replace with function body.
+	remove_dock(dock)
+	dock.queue_free()
