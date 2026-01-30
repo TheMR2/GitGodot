@@ -4,8 +4,8 @@ extends BoxContainer
 var branch:Label
 var data = []
 var path = ProjectSettings.globalize_path("res://") 
-@onready var label: LineEdit = $Push_Container/LineEdit
 var Branch
+@onready var Entry: LineEdit = $Push_Container/LineEdit
 
 func _ready() -> void:
 	load_data()
@@ -32,6 +32,7 @@ func _on_buttond_pressed() -> void:
 	branch = Label.new()
 	branch.text = $Window/HBoxContainer/LineEdit.text
 	$Window/ScrollContainer/VBoxContainer.add_child(branch)
+	$Window/HBoxContainer/LineEdit.clear()
 	pass # Replace with function body.
 
 
@@ -97,14 +98,14 @@ func _on_info_close_requested() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Branch != "" and $Push_Container/LineEdit.text != "":
+	if Branch != "" and Entry.text != "":
 		$Push_Container/Button.disabled = false
 	else:
 		$Push_Container/Button.disabled = true
 		pass
 	pass
 func Push():
-	var commit = label.text
+	var commit = Entry.text
 	var output := [] 
 	var cmd = ( "cd \""+ path +"\"" 
 	+ "&& git add ." 
@@ -115,8 +116,9 @@ func Push():
 	for line in output: 
 		print(cmd)
 		print("line",line)
-	pass # Replace with function body.
+	Entry.clear()
 	
+	pass # Replace with function body.
 	
 func Pull():
 	var output := []

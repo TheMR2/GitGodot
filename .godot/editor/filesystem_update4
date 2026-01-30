@@ -1,0 +1,5 @@
+res://addons/GitGodot/GitGodot.tscn
+res://addons/GitGodot/git_godot.gd
+res://addons/GitGodot/Save_Data/save.json
+res://addons/GitGodot/plugin.gd
+res://addons/GitGodot/plugin.cfg

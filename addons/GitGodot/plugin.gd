@@ -2,17 +2,8 @@
 extends EditorPlugin
 
 var path = ProjectSettings.globalize_path("res://") 
-var button:Button
-var label:LineEdit
 var dock:EditorDock
-var vboxcontainer:VBoxContainer
 
-	#vboxcontainer = VBoxContainer.new()
-	#button = Button.new()
-	#button.text = "Push"
-	#label = LineEdit.new()
-	#vboxcontainer.add_child(button)
-	#vboxcontainer.add_child(label)
 func _enter_tree() -> void:
 	dock = EditorDock.new()
 	dock.name = "GitGodot 2.0"

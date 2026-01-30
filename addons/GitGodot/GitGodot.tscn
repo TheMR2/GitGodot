@@ -121,9 +121,9 @@ visible = false
 
 [node name="TextureRect" type="TextureRect" parent="info" unique_id=1027674493]
 offset_left = 113.0
-offset_top = 436.0
+offset_top = 532.0
 offset_right = 246.0
-offset_bottom = 569.0
+offset_bottom = 665.0
 texture = ExtResource("2_mnsk4")
 expand_mode = 1
 
@@ -138,9 +138,9 @@ text = "support me via +201110747697 (if you can)"
 
 [node name="Label3" type="Label" parent="info" unique_id=2004181617]
 offset_left = 321.0
-offset_top = 707.0
+offset_top = 778.0
 offset_right = 694.0
-offset_bottom = 800.0
+offset_bottom = 871.0
 theme_override_font_sizes/font_size = 32
 text = "supporters will appear here in the next update."
 autowrap_mode = 3
@@ -172,9 +172,9 @@ text = "Github Page"
 
 [node name="LinkButton" type="LinkButton" parent="info" unique_id=1578385633]
 offset_left = 276.0
-offset_top = 246.0
+offset_top = 303.0
 offset_right = 423.0
-offset_bottom = 291.0
+offset_bottom = 348.0
 theme_override_colors/font_color = Color(0, 0, 0.8745098, 1)
 theme_override_font_sizes/font_size = 32
 text = "Facebook"
@@ -182,9 +182,9 @@ uri = "https://www.facebook.com/profile.php?id=61558072395327"
 
 [node name="LinkButton2" type="LinkButton" parent="info" unique_id=1356873312]
 offset_left = 439.0
-offset_top = 246.0
+offset_top = 303.0
 offset_right = 586.0
-offset_bottom = 291.0
+offset_bottom = 348.0
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Youtube"
@@ -192,18 +192,18 @@ uri = "https://www.youtube.com/@MR-np5nl"
 
 [node name="LinkButton4" type="LinkButton" parent="info" unique_id=902132661]
 offset_left = 439.0
-offset_top = 303.0
+offset_top = 384.0
 offset_right = 586.0
-offset_bottom = 348.0
+offset_bottom = 429.0
 theme_override_colors/font_color = Color(0.43917835, 0.5535536, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "The_MR"
 
 [node name="LinkButton3" type="LinkButton" parent="info" unique_id=17299782]
 offset_left = 586.0
-offset_top = 246.0
+offset_top = 303.0
 offset_right = 733.0
-offset_bottom = 291.0
+offset_bottom = 348.0
 theme_override_colors/font_color = Color(0, 0.54901963, 0.8745098, 1)
 theme_override_font_sizes/font_size = 32
 text = "Linkedin"
