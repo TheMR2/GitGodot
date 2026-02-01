@@ -54,3 +54,10 @@
 
 <h3>Pull Button:</h3>
 <h4>"cd "project path" && git reset --hard && git pull"</h4>
+
+
+
+<h1>⚠️ This project is under active development.
+Please use only the versions published in the Releases section.
+The main branch may be unstable.
+</h1>
