@@ -1,5 +1,2 @@
-res://addons/GitGodot/Save_Data/save.json
-res://test.tscn
-res://test.gd
-res://addons/GitGodot/git_godot.gd
 res://addons/GitGodot/GitGodot.tscn
+res://addons/GitGodot/git_godot.gd

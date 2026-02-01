@@ -52,6 +52,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_cht1j")
 
+[node name="Label3" type="Label" parent="Push_Container2" unique_id=163907710]
+layout_mode = 2
+text = "Last Commit"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Push_Container2" unique_id=1518894251]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_cht1j")
+
 [node name="Pull_Container" type="VBoxContainer" parent="." unique_id=1654908570]
 layout_mode = 2
 size_flags_horizontal = 3

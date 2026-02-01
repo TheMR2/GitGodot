@@ -5,6 +5,7 @@ var branch:Label
 var data = []
 var path = ProjectSettings.globalize_path("res://") 
 var Branch
+var LastCommit
 @onready var Entry: LineEdit = $Push_Container/LineEdit
 
 
@@ -15,9 +16,16 @@ func _ready() -> void:
 		var line = Branch_Name.get_line()
 		Branch_Name.close()
 		Branch = line.split("/")[-1]
+	commit()
 	$Push_Container2/Label2.text = Branch
 
-
+func commit():
+	if FileAccess.file_exists("res://.git/COMMIT_EDITMSG"):
+		var lastCommit = FileAccess.open("res://.git/COMMIT_EDITMSG",FileAccess.READ)
+		LastCommit = lastCommit.get_line()
+		lastCommit.close()
+		$Push_Container2/Label4.text = LastCommit
+	pass
 
 func Donate_Page() -> void:
 	$info.popup()
@@ -49,12 +57,13 @@ func Push():
 		print(cmd)
 		print("line",line)
 	Entry.clear()
+	commit()
 	
 	pass # Replace with function body.
 	
 func Pull():
 	var output := []
-	var cmd = ("cd \""+ path +"\""+"&& git reset --hard" + "git pull")
+	var cmd = ("cd \""+ path +"\""+"&& git reset --hard " + " && git pull")
 	OS.execute("cmd.exe", ["/c", cmd], output, true)
 	for line in output:
 		print("line",line)
