@@ -54,10 +54,10 @@ func Push():
 	) 
 	OS.execute( "cmd.exe", ["/c", cmd], output, true ) 
 	for line in output: 
-		print(cmd)
 		print("line",line)
 	Entry.clear()
 	commit()
+	print(cmd)
 	
 	pass # Replace with function body.
 	
@@ -68,3 +68,17 @@ func Pull():
 	for line in output:
 		print("line",line)
 	pass
+
+
+func _on_checkout_pressed() -> void:
+	$Checkout.popup()
+	pass # Replace with function body.
+
+
+func _on_checkout2_pressed() -> void:
+	var output := []
+	var cmd = ("cd \""+ path +"\"" + "&& git checkout " + $Checkout/LineEdit.text)
+	for line in output:
+		print("line",line)
+	print(cmd)
+	pass # Replace with function body.
