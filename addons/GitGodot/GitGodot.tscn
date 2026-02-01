@@ -88,7 +88,6 @@ oversampling_override = 1.0
 title = "Info"
 position = Vector2i(45, 36)
 size = Vector2i(1000, 1000)
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="info" unique_id=1027674493]
 offset_left = 113.0
@@ -170,6 +169,7 @@ offset_bottom = 429.0
 theme_override_colors/font_color = Color(0.43917835, 0.5535536, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "The_MR"
+uri = "https://the-mr.netlify.app/"
 
 [node name="LinkButton3" type="LinkButton" parent="info" unique_id=17299782]
 offset_left = 586.0
