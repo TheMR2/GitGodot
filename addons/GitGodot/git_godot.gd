@@ -13,7 +13,6 @@ var LastCommit
 func _ready() -> void:
 	Set_Branch()
 	commit()
-	$Push_Container2/Label2.text = Branch
 
 func Set_Branch():
 	if FileAccess.file_exists("res://.git/HEAD"):
@@ -21,6 +20,7 @@ func Set_Branch():
 		var line = Branch_Name.get_line()
 		Branch_Name.close()
 		Branch = line.split("/")[-1]
+		$Push_Container2/Label2.text = Branch
 	pass
 func commit():
 	if FileAccess.file_exists("res://.git/COMMIT_EDITMSG"):
