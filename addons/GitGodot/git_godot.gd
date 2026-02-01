@@ -41,8 +41,6 @@ func _on_info_close_requested() -> void:
 
 
 func _process(delta: float) -> void:
-	commit()
-	Set_Branch()
 	if Branch != "" and Entry.text != "":
 		$Push_Container/Button.disabled = false
 	else:
@@ -67,8 +65,6 @@ func Push():
 		print("line",line)
 	Entry.clear()
 	commit()
-	print(cmd)
-	
 	pass # Replace with function body.
 	
 func Pull():
@@ -78,28 +74,3 @@ func Pull():
 	for line in output:
 		print("line",line)
 	pass
-
-
-func _on_checkout_pressed() -> void:
-	$Checkout.popup()
-	pass # Replace with function body.
-
-
-func _on_checkout2_pressed() -> void:
-	var output := []
-	var commit = $Checkout/Commit.text
-	var cmd = ("cd \""+ path +"\"" + "&& git add ."+"&& git commit -m\""+ commit +"\""+"&& git checkout " + $Checkout/Branch.text)
-	OS.execute("cmd.exe", ["/c", cmd], output, true)
-
-	for line in output:
-		print("line",line)
-	print(cmd)
-	$Checkout/Branch.clear()
-	$Checkout/Commit.clear()
-	Set_Branch()
-	pass # Replace with function body.
-
-
-func _on_checkout_close_requested() -> void:
-	$Checkout.hide()
-	pass # Replace with function body.
