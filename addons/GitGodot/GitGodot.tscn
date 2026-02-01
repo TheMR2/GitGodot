@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://c3l2lnc5lgsa1" path="res://addons/GitGodot/vodafone-icon.svg" id="2_mnsk4"]
 [ext_resource type="Texture2D" uid="uid://bf64yy6fmv8ra" path="res://addons/GitGodot/Git_Godot.png" id="3_cht1j"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cht1j"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_width_left = 5
+border_width_right = 5
+border_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+
 [node name="VBoxContainer" type="BoxContainer" unique_id=1750021893]
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,8 +47,10 @@ layout_mode = 2
 text = "Branch"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Push_Container2" unique_id=695253357]
+[node name="Label2" type="Label" parent="Push_Container2" unique_id=986554322]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_cht1j")
 
 [node name="Pull_Container" type="VBoxContainer" parent="." unique_id=1654908570]
 layout_mode = 2
@@ -61,56 +69,9 @@ text = "Pull"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Pull_Container2" unique_id=1690018993]
-layout_mode = 2
-text = "settings"
-
 [node name="Button2" type="Button" parent="Pull_Container2" unique_id=1678304426]
 layout_mode = 2
 text = "Info"
-
-[node name="Window" type="Window" parent="." unique_id=1363460217]
-oversampling_override = 1.0
-title = "GitGodot Settings"
-position = Vector2i(298, 72)
-size = Vector2i(390, 333)
-visible = false
-
-[node name="Label" type="Label" parent="Window" unique_id=2065116028]
-offset_top = 8.0
-offset_right = 390.0
-offset_bottom = 31.0
-text = "Add_Branch"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Window" unique_id=1348971652]
-offset_top = 294.0
-offset_right = 390.0
-offset_bottom = 325.0
-theme_override_constants/separation = 6
-
-[node name="LineEdit" type="LineEdit" parent="Window/HBoxContainer" unique_id=561723274]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Branch Name"
-
-[node name="Button" type="Button" parent="Window/HBoxContainer" unique_id=1864854492]
-layout_mode = 2
-text = "  +  "
-
-[node name="Button2" type="Button" parent="Window/HBoxContainer" unique_id=577852025]
-layout_mode = 2
-text = "  -  "
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Window" unique_id=1382789954]
-offset_top = 31.0
-offset_right = 390.0
-offset_bottom = 294.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/ScrollContainer" unique_id=410719245]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="info" type="Window" parent="." unique_id=485049641]
 oversampling_override = 1.0
@@ -169,6 +130,7 @@ offset_top = 45.0
 offset_right = 157.0
 offset_bottom = 68.0
 text = "Github Page"
+uri = "https://github.com/TheMR2/GitGodot"
 
 [node name="LinkButton" type="LinkButton" parent="info" unique_id=1578385633]
 offset_left = 276.0
@@ -210,12 +172,6 @@ text = "Linkedin"
 uri = "https://www.linkedin.com/in/mohamed-rajab-749899391/"
 
 [connection signal="pressed" from="Push_Container/Button" to="." method="Push"]
-[connection signal="item_selected" from="Push_Container2/OptionButton" to="." method="Set_Branch"]
-[connection signal="pressed" from="Push_Container2/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="Pull_Container/Button" to="." method="Pull"]
-[connection signal="pressed" from="Pull_Container2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pull_Container2/Button2" to="." method="Donate_Page"]
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
-[connection signal="pressed" from="Window/HBoxContainer/Button" to="." method="_on_buttond_pressed"]
-[connection signal="pressed" from="Window/HBoxContainer/Button2" to="." method="delete"]
 [connection signal="close_requested" from="info" to="." method="_on_info_close_requested"]

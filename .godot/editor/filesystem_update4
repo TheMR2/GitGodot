@@ -1,2 +1,5 @@
 res://addons/GitGodot/Save_Data/save.json
-res://README.md
+res://test.tscn
+res://test.gd
+res://addons/GitGodot/git_godot.gd
+res://addons/GitGodot/GitGodot.tscn
