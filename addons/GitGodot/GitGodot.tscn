@@ -51,6 +51,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_cht1j")
+text = "Dev"
 
 [node name="Label3" type="Label" parent="Push_Container2" unique_id=163907710]
 layout_mode = 2
@@ -61,6 +62,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_cht1j")
+text = "switch"
 
 [node name="Pull_Container" type="VBoxContainer" parent="." unique_id=1654908570]
 layout_mode = 2
@@ -190,29 +192,46 @@ uri = "https://www.linkedin.com/in/mohamed-rajab-749899391/"
 oversampling_override = 1.0
 position = Vector2i(297, 36)
 size = Vector2i(500, 500)
+visible = false
 
 [node name="Label" type="Label" parent="Checkout" unique_id=1522751324]
-offset_left = 110.0
+offset_left = 120.0
 offset_top = 78.0
-offset_right = 374.0
+offset_right = 384.0
 offset_bottom = 123.0
 theme_override_font_sizes/font_size = 32
 text = "Checkout Branch"
 
-[node name="LineEdit" type="LineEdit" parent="Checkout" unique_id=1418481937]
+[node name="Branch" type="LineEdit" parent="Checkout" unique_id=1418481937]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -27.0
+offset_right = 156.0
+offset_bottom = 49.950012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Branch_Name"
+alignment = 1
+
+[node name="Commit" type="LineEdit" parent="Checkout" unique_id=1239541714]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -155.0
-offset_top = -99.0
+offset_top = -117.0
 offset_right = 155.0
-offset_bottom = -22.049988
+offset_bottom = -40.049988
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-placeholder_text = "Branch_Name"
+placeholder_text = "Commit"
 alignment = 1
 
 [node name="Checkout" type="Button" parent="Checkout" unique_id=100958789]
@@ -221,13 +240,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -6.0
-offset_right = 85.0
-offset_bottom = 58.0
+offset_left = -84.0
+offset_top = 66.0
+offset_right = 86.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
+disabled = true
 text = "Checkout"
 
 [connection signal="pressed" from="Push_Container/Button" to="." method="Push"]
@@ -235,4 +255,5 @@ text = "Checkout"
 [connection signal="pressed" from="Pull_Container2/Checkout" to="." method="_on_checkout_pressed"]
 [connection signal="pressed" from="Pull_Container2/Button2" to="." method="Donate_Page"]
 [connection signal="close_requested" from="info" to="." method="_on_info_close_requested"]
+[connection signal="close_requested" from="Checkout" to="." method="_on_checkout_close_requested"]
 [connection signal="pressed" from="Checkout/Checkout" to="." method="_on_checkout2_pressed"]

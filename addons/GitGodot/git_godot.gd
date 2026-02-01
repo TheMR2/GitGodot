@@ -11,14 +11,17 @@ var LastCommit
 
 
 func _ready() -> void:
+	Set_Branch()
+	commit()
+	$Push_Container2/Label2.text = Branch
+
+func Set_Branch():
 	if FileAccess.file_exists("res://.git/HEAD"):
 		var Branch_Name = FileAccess.open("res://.git/HEAD",FileAccess.READ)
 		var line = Branch_Name.get_line()
 		Branch_Name.close()
 		Branch = line.split("/")[-1]
-	commit()
-	$Push_Container2/Label2.text = Branch
-
+	pass
 func commit():
 	if FileAccess.file_exists("res://.git/COMMIT_EDITMSG"):
 		var lastCommit = FileAccess.open("res://.git/COMMIT_EDITMSG",FileAccess.READ)
@@ -42,6 +45,11 @@ func _process(delta: float) -> void:
 		$Push_Container/Button.disabled = false
 	else:
 		$Push_Container/Button.disabled = true
+		pass
+	if $Checkout/Branch.text != "" and $Checkout/Commit.text != "":
+		$Checkout/Checkout.disabled = false
+	else:
+		$Checkout/Checkout.disabled = true
 		pass
 	pass
 func Push():
@@ -77,11 +85,19 @@ func _on_checkout_pressed() -> void:
 
 func _on_checkout2_pressed() -> void:
 	var output := []
-	var commit = Entry.text
+	var commit = $Checkout/Commit.text
 	var cmd = ("cd \""+ path +"\"" + "&& git add ."+"&& git commit -m\""+ commit +"\""+"&& git checkout " + $Checkout/LineEdit.text)
 	OS.execute("cmd.exe", ["/c", cmd], output, true)
 
 	for line in output:
 		print("line",line)
 	print(cmd)
+	$Checkout/Branch.clear()
+	$Checkout/Commit.clear()
+	Set_Branch()
+	pass # Replace with function body.
+
+
+func _on_checkout_close_requested() -> void:
+	$Checkout.hide()
 	pass # Replace with function body.
