@@ -41,6 +41,8 @@ func _on_info_close_requested() -> void:
 
 
 func _process(delta: float) -> void:
+	commit()
+	Set_Branch()
 	if Branch != "" and Entry.text != "":
 		$Push_Container/Button.disabled = false
 	else:
