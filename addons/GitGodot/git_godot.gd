@@ -86,7 +86,7 @@ func _on_checkout_pressed() -> void:
 func _on_checkout2_pressed() -> void:
 	var output := []
 	var commit = $Checkout/Commit.text
-	var cmd = ("cd \""+ path +"\"" + "&& git add ."+"&& git commit -m\""+ commit +"\""+"&& git checkout " + $Checkout/LineEdit.text)
+	var cmd = ("cd \""+ path +"\"" + "&& git add ."+"&& git commit -m\""+ commit +"\""+"&& git checkout " + $Checkout/Branch.text)
 	OS.execute("cmd.exe", ["/c", cmd], output, true)
 
 	for line in output:
