@@ -46,11 +46,6 @@ func _process(delta: float) -> void:
 	else:
 		$Push_Container/Button.disabled = true
 		pass
-	if $Checkout/Branch.text != "" and $Checkout/Commit.text != "":
-		$Checkout/Checkout.disabled = false
-	else:
-		$Checkout/Checkout.disabled = true
-		pass
 	pass
 func Push():
 	var commit = Entry.text

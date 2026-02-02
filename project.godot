@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="GitGodot"
+config/tags=PackedStringArray("godot_plugins")
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bf64yy6fmv8ra"
 
