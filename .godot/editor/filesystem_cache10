@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1770058899
+::res://::1771335036
 1.png::CompressedTexture2D::1931256250020833765::1769734718::1769737482::1::::<><><>0<>0<>dbb0617ea7f31118f20fc836a3f300aa<>res://.godot/imported/1.png-515c813a180ba5fd2e61c8e75c4cac47.ctex::
 2.png::CompressedTexture2D::6514621085922862157::1769722911::1769737483::1::::<><><>0<>0<>eca07fd910f7d3d8ca9c835cbe173886<>res://.godot/imported/2.png-3f238cfe6181f9f93f40cee36336f408.ctex::
 3.png::CompressedTexture2D::5647455756144147906::1769722918::1769737482::1::::<><><>0<>0<>0cfd0d550b77ea35dcce34800a0b1bb0<>res://.godot/imported/3.png-ab9dc1e38b41816b4ae4b69d0cb53034.ctex::
@@ -9,13 +9,14 @@
 7.png::CompressedTexture2D::851495477092701068::1769734464::1769737482::1::::<><><>0<>0<>7508efbe7600414b5e9c465c0718e290<>res://.godot/imported/7.png-e72809ab7ccd112ddfd11a481f421ba8.ctex::
 README.md::TextFile::-1::1769984827::0::1::::<><><>0<>0<><>::
 ::res://addons/::1769720463
-::res://addons/GitGodot/::1769990197
-GitGodot.tscn::PackedScene::8205762431788033910::1769990197::0::1::::<><><>0<>0<><>::uid://d2hn7gl1vk4mc::::res://addons/GitGodot/git_godot.gd<>uid://c3l2lnc5lgsa1::::res://addons/GitGodot/vodafone-icon.svg<>uid://bf64yy6fmv8ra::::res://addons/GitGodot/Git_Godot.png
-git_godot.gd::GDScript::9069658273238277166::1769990184::0::1::::<>BoxContainer<><>0<>1<><>::
+::res://addons/GitGodot/::1771334716
+GitGodot.tscn::PackedScene::8205762431788033910::1771334716::0::1::::<><><>0<>0<><>::uid://bf64yy6fmv8ra::::res://addons/GitGodot/Git_Godot.png
+git_godot.gd::GDScript::9152609743761544456::1771333175::0::1::::<>BoxContainer<><>0<>1<><>::
 Git_Godot.png::CompressedTexture2D::2803165572796478606::1769646739::1769720515::1::::<><><>0<>0<>f0be1e6b2d6930517e8b937a22913fd4<>res://.godot/imported/Git_Godot.png-4aeb0e144977c23a761207853ac39f47.ctex::
 Git_Godot.svg::CompressedTexture2D::392702238284945342::1769646525::1769737482::1::::<><><>0<>0<>e4d03890254ecef106d0d41d0e5bd729<>res://.godot/imported/Git_Godot.svg-92ddd4aa7e31a85965e787690b0546f2.ctex::
+No_Git.tscn::PackedScene::8943004485438034827::1771334678::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1769722185::0::1::::<><><>0<>0<><>::
-plugin.gd::GDScript::8480713945221741218::1769722176::0::1::::<>EditorPlugin<><>0<>1<><>::
+plugin.gd::GDScript::8480713945221741218::1771334705::0::1::::<>EditorPlugin<><>0<>1<><>::
 vodafone-icon.svg::CompressedTexture2D::6762496834354594562::1769640880::1769720515::1::::<><><>0<>0<>0f8412819c848d2e87d6c68a8ffaff9c<>res://.godot/imported/vodafone-icon.svg-f0c8437e245c2810da927110a6ba678c.ctex::
 ::res://addons/GitGodot/Save_Data/::1769978114
 save.json::JSON::-1::1769978114::0::1::::<><><>0<>0<><>::

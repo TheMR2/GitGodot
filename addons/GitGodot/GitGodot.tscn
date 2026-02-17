@@ -1,8 +1,80 @@
 [gd_scene format=3 uid="uid://do56yc47s0guo"]
 
-[ext_resource type="Script" uid="uid://d2hn7gl1vk4mc" path="res://addons/GitGodot/git_godot.gd" id="1_gcw6w"]
-[ext_resource type="Texture2D" uid="uid://c3l2lnc5lgsa1" path="res://addons/GitGodot/vodafone-icon.svg" id="2_mnsk4"]
 [ext_resource type="Texture2D" uid="uid://bf64yy6fmv8ra" path="res://addons/GitGodot/Git_Godot.png" id="3_cht1j"]
+
+[sub_resource type="GDScript" id="GDScript_mnsk4"]
+script/source = "@tool
+extends BoxContainer
+
+var branch:Label
+var data = []
+var path = ProjectSettings.globalize_path(\"res://\") 
+var Branch
+var LastCommit
+@onready var Entry: LineEdit = $Push_Container/LineEdit
+
+
+
+func _ready() -> void:
+	Set_Branch()
+	commit()
+
+func Set_Branch():
+	if FileAccess.file_exists(\"res://.git/HEAD\"):
+		var Branch_Name = FileAccess.open(\"res://.git/HEAD\",FileAccess.READ)
+		var line = Branch_Name.get_line()
+		Branch_Name.close()
+		Branch = line.split(\"/\")[-1]
+		$Push_Container2/Label2.text = Branch
+	pass
+func commit():
+	if FileAccess.file_exists(\"res://.git/COMMIT_EDITMSG\"):
+		var lastCommit = FileAccess.open(\"res://.git/COMMIT_EDITMSG\",FileAccess.READ)
+		LastCommit = lastCommit.get_line()
+		lastCommit.close()
+		$Push_Container2/Label4.text = LastCommit
+	pass
+
+func Donate_Page() -> void:
+	$info.popup()
+	pass # Replace with function body.
+
+
+func _on_info_close_requested() -> void:
+	$info.hide()
+	pass # Replace with function body.
+
+
+func _process(delta: float) -> void:
+	if Branch != \"\" and Entry.text != \"\":
+		$Push_Container/Button.disabled = false
+	else:
+		$Push_Container/Button.disabled = true
+		pass
+	pass
+func Push():
+	var commit = Entry.text
+	var output := [] 
+	var cmd = ( \"cd \\\"\"+ path +\"\\\"\" 
+	+ \"&& git add .\" 
+	+ \"&& git commit -m \\\"\" + commit +\"\\\"\" 
+	+ \"&& git push -u origin \" + Branch 
+	) 
+	OS.execute( \"cmd.exe\", [\"/c\", cmd], output, true ) 
+	for line in output: 
+		print(\"line\",line)
+	Entry.clear()
+	commit()
+	pass # Replace with function body.
+	
+func Pull():
+	var output := []
+	var cmd = (\"cd \\\"\"+ path +\"\\\"\"+\"&& git reset --hard \" + \" && git pull\")
+	OS.execute(\"cmd.exe\", [\"/c\", cmd], output, true)
+	for line in output:
+		print(\"line\",line)
+	pass
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cht1j"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -18,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 87
 alignment = 1
-script = ExtResource("1_gcw6w")
+script = SubResource("GDScript_mnsk4")
 
 [node name="Push_Container" type="VBoxContainer" parent="." unique_id=1108780482]
 layout_mode = 2
@@ -88,54 +160,70 @@ text = "Info"
 [node name="info" type="Window" parent="." unique_id=485049641]
 oversampling_override = 1.0
 title = "Info"
-position = Vector2i(45, 36)
-size = Vector2i(1000, 1000)
+initial_position = 1
+size = Vector2i(500, 500)
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="info" unique_id=1027674493]
-offset_left = 113.0
-offset_top = 532.0
-offset_right = 246.0
-offset_bottom = 665.0
-texture = ExtResource("2_mnsk4")
-expand_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="info" unique_id=338878288]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = 263.0
+offset_right = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="info/TextureRect" unique_id=1383990288]
-layout_mode = 0
-offset_left = 146.0
-offset_top = 48.0
-offset_right = 801.0
-offset_bottom = 93.0
+[node name="LinkButton4" type="LinkButton" parent="info/VBoxContainer" unique_id=902132661]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.43917835, 0.5535536, 1, 1)
 theme_override_font_sizes/font_size = 32
-text = "support me via +201110747697 (if you can)"
+text = "The_MR"
+uri = "https://the-mr.netlify.app/"
 
-[node name="Label3" type="Label" parent="info" unique_id=2004181617]
-offset_left = 321.0
-offset_top = 778.0
-offset_right = 694.0
-offset_bottom = 871.0
+[node name="LinkButton" type="LinkButton" parent="info/VBoxContainer" unique_id=1578385633]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0.8745098, 1)
 theme_override_font_sizes/font_size = 32
-text = "supporters will appear here in the next update."
-autowrap_mode = 3
+text = "Facebook"
+uri = "https://www.facebook.com/profile.php?id=61558072395327"
 
-[node name="TextureRect2" type="TextureRect" parent="info" unique_id=1311891920]
-offset_left = 408.0
-offset_top = -3.0
-offset_right = 598.0
-offset_bottom = 187.0
+[node name="LinkButton2" type="LinkButton" parent="info/VBoxContainer" unique_id=1356873312]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Youtube"
+uri = "https://www.youtube.com/@MR-np5nl"
+
+[node name="LinkButton3" type="LinkButton" parent="info/VBoxContainer" unique_id=17299782]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.54901963, 0.8745098, 1)
+theme_override_font_sizes/font_size = 32
+text = "Linkedin"
+uri = "https://www.linkedin.com/in/mohamed-rajab-749899391/"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="info" unique_id=230786784]
+offset_left = 161.0
+offset_right = 361.0
+offset_bottom = 200.0
+
+[node name="TextureRect2" type="TextureRect" parent="info/VBoxContainer2" unique_id=1311891920]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 texture = ExtResource("3_cht1j")
 expand_mode = 1
 
-[node name="Label4" type="Label" parent="info/TextureRect2" unique_id=1424957034]
+[node name="Label4" type="Label" parent="info/VBoxContainer2/TextureRect2" unique_id=1424957034]
 layout_mode = 0
 offset_left = -18.0
 offset_top = 195.0
 offset_right = 196.0
 offset_bottom = 240.0
 theme_override_font_sizes/font_size = 32
-text = "GitGodot V2.0"
+text = "GitGodot V3"
 
-[node name="LinkButton" type="LinkButton" parent="info/TextureRect2/Label4" unique_id=1099670295]
+[node name="LinkButton" type="LinkButton" parent="info/VBoxContainer2/TextureRect2/Label4" unique_id=1099670295]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 45.0
@@ -143,46 +231,6 @@ offset_right = 157.0
 offset_bottom = 68.0
 text = "Github Page"
 uri = "https://github.com/TheMR2/GitGodot"
-
-[node name="LinkButton" type="LinkButton" parent="info" unique_id=1578385633]
-offset_left = 276.0
-offset_top = 303.0
-offset_right = 423.0
-offset_bottom = 348.0
-theme_override_colors/font_color = Color(0, 0, 0.8745098, 1)
-theme_override_font_sizes/font_size = 32
-text = "Facebook"
-uri = "https://www.facebook.com/profile.php?id=61558072395327"
-
-[node name="LinkButton2" type="LinkButton" parent="info" unique_id=1356873312]
-offset_left = 439.0
-offset_top = 303.0
-offset_right = 586.0
-offset_bottom = 348.0
-theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Youtube"
-uri = "https://www.youtube.com/@MR-np5nl"
-
-[node name="LinkButton4" type="LinkButton" parent="info" unique_id=902132661]
-offset_left = 439.0
-offset_top = 384.0
-offset_right = 586.0
-offset_bottom = 429.0
-theme_override_colors/font_color = Color(0.43917835, 0.5535536, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "The_MR"
-uri = "https://the-mr.netlify.app/"
-
-[node name="LinkButton3" type="LinkButton" parent="info" unique_id=17299782]
-offset_left = 586.0
-offset_top = 303.0
-offset_right = 733.0
-offset_bottom = 348.0
-theme_override_colors/font_color = Color(0, 0.54901963, 0.8745098, 1)
-theme_override_font_sizes/font_size = 32
-text = "Linkedin"
-uri = "https://www.linkedin.com/in/mohamed-rajab-749899391/"
 
 [connection signal="pressed" from="Push_Container/Button" to="." method="Push"]
 [connection signal="pressed" from="Pull_Container/Button" to="." method="Pull"]
